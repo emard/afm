@@ -33,14 +33,13 @@ module bendspring(flexh=[5,15,5],flexx=3,spher=1)
       if(spher)
         sphere(d=ds,$fn=16);
       rotate([0,flexa,0])
-      {
         cylinder(d=ds,h=flexh[1]/cos(flexa),$fn=16);
-        if(spher)
-        translate([0,0,flexh[1]/cos(flexa)])
-          sphere(d=ds,$fn=16);
-      }
       translate([flexx,0,flexh[1]])
-      cylinder(d=ds,h=flexh[2],$fn=16);
+      {
+        cylinder(d=ds,h=flexh[2],$fn=16);
+        if(spher)
+          sphere(d=ds,$fn=16); 
+      }
     }
   }
 }
