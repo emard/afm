@@ -69,6 +69,29 @@ module bolts()
     }
 }
 
+module front()
+{
+  hc=3;
+  douter=30;
+  dinsert=20.5;
+  in=1;
+  dopen=19;
+  color([0.4,0.4,0.4])
+  translate([0,0,-hc/2+in])
+    difference()
+    {
+      //cube([30,30,hc],center=true);
+      cylinder(d=douter,h=hc,center=true,$fn=64);
+      // insertion hole
+      translate([0,0,hc/2-in/2])
+        cylinder(d=dinsert,h=in+0.1,center=true);
+      // aperture hole
+      cylinder(d=dopen,h=hc+0.1,center=true);
+    }
+}
+
 piezo();
 %springs(flexh=[5,15,5],flexx=3,ds=4.2,junction=1,fn=16);
 bolts();
+front();
+
