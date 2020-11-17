@@ -21,67 +21,54 @@ module piezo()
     }
 }
 
-module bendspring(flexh=[5,15,5],flexx=3,spher=1)
+module bendspring(flexh=[5,15,5],flexx=3,ds=4.2,junction=1,fn=16)
 {
-  ds=4.2;
   flexa=atan(flexx/flexh[1]);
   union()
   {
-    cylinder(d=ds,h=flexh[0],$fn=16);
+    cylinder(d=ds,h=flexh[0],$fn=fn);
     translate([0,0,flexh[0]])
     {
-      if(spher)
-        sphere(d=ds,$fn=16);
+      if(junction)
+        sphere(d=ds,$fn=fn);
       rotate([0,flexa,0])
-        cylinder(d=ds,h=flexh[1]/cos(flexa),$fn=16);
+        cylinder(d=ds,h=flexh[1]/cos(flexa),$fn=fn);
       translate([flexx,0,flexh[1]])
       {
-        cylinder(d=ds,h=flexh[2],$fn=16);
-        if(spher)
-          sphere(d=ds,$fn=16); 
+        cylinder(d=ds,h=flexh[2],$fn=fn);
+        if(junction)
+          sphere(d=ds,$fn=fn);
       }
     }
   }
 }
 
-module spring2()
+module springs(flexh=[5,15,5],flexx=3,ds=4.2,junction=1,fn=16)
 {
   r0=4;
   for(i=[0:3])
   rotate([0,0,i*90+45])
   translate([r0,0,0.7])
-    bendspring();
+    bendspring(flexh=flexh,flexx=flexx,ds=ds,junction=junction,fn=fn);
 }
 
-module springs()
-{
-  s=3; // spacing
-  for(i=[-1:2:1])
-    for(j=[-1:2:1])
-      translate([s*i,s*j,0.7])
-        cylinder(d=4.2,h=19,$fn=16);
-}
 
 module bolts()
 {
-  s=3;
+  r0=7;
   color([0.6,0.6,0.7])
-  for(i=[-1:2:1])
-    for(j=[-1:2:1])
+  for(i=[0:3])
+  rotate([0,0,i*90+45])
+    translate([r0,0,31])
     {
-      translate([s*i,s*j,25])
-      {
         // head
         cylinder(d=5.5,h=3,$fn=16);
         // rod
         rotate([180,0,0])
-          cylinder(d=3,h=12,$fn=16);
-      }
+          cylinder(d=3,h=10,$fn=16);
     }
-
 }
 
 piezo();
-%spring2();
-//%springs();
-//bolts();
+%springs(flexh=[5,15,5],flexx=3,ds=4.2,junction=1,fn=16);
+bolts();
