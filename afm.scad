@@ -21,26 +21,27 @@ module piezo()
     }
 }
 
-module bendspring(flexh=[5,15,5],flexx=3)
+module bendspring(flexh=[5,15,5],flexx=3,spher=1)
 {
   ds=4.2;
-  flexa=atan(flexx/(flexh[1]-flexh[0]));
+  flexa=atan(flexx/flexh[1]);
   union()
   {
-  cylinder(d=ds,h=flexh[0],$fn=16);
-  translate([0,0,flexh[0]])
-  {
-    sphere(d=ds,$fn=16);
-    rotate([0,flexa,0])
+    cylinder(d=ds,h=flexh[0],$fn=16);
+    translate([0,0,flexh[0]])
+    {
+      if(spher)
+        sphere(d=ds,$fn=16);
+      rotate([0,flexa,0])
       {
-        cylinder(d=ds,h=flexh[1],$fn=16);
-        translate([0,0,flexh[1]])
+        cylinder(d=ds,h=flexh[1]/cos(flexa),$fn=16);
+        if(spher)
+        translate([0,0,flexh[1]/cos(flexa)])
           sphere(d=ds,$fn=16);
       }
-    translate([flexh[1]*sin(flexa),0,flexh[1]*cos(flexa)])
-    //translate([flexx,0,flexh[1]])
+      translate([flexx,0,flexh[1]])
       cylinder(d=ds,h=flexh[2],$fn=16);
-  }
+    }
   }
 }
 
