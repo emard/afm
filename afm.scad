@@ -72,10 +72,10 @@ module bolts()
 module front()
 {
   hc=3;
+  in=1;
   douter=30;
   dinsert=20.5;
-  in=1;
-  dopen=19;
+  dopen=18;
   color([0.4,0.4,0.4])
   translate([0,0,-hc/2+in])
     difference()
@@ -90,8 +90,10 @@ module front()
     }
 }
 
+
 piezo();
 %springs(flexh=[5,15,5],flexx=3,ds=4.2,junction=1,fn=16);
 bolts();
+
 front();
 
