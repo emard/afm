@@ -59,7 +59,7 @@ module bolts()
   color([0.6,0.6,0.7])
   for(i=[0:3])
   rotate([0,0,i*90+45])
-    translate([r0,0,31])
+    translate([r0,0,26])
     {
         // head
         cylinder(d=5.5,h=3,$fn=16);
@@ -90,10 +90,22 @@ module front()
     }
 }
 
+module middle()
+{
+  color([0.4,0.4,0.4])
+  difference()
+  {
+    translate([0,0,1])
+    cylinder(d=32,h=19,$fn=64);
+    springs(flexh=[5,10,5],flexx=3,ds=5,junction=1,fn=16);
+  }    
+}
+
 
 piezo();
-%springs(flexh=[5,15,5],flexx=3,ds=4.2,junction=1,fn=16);
+%springs(flexh=[5,10,5],flexx=3,ds=4.2,junction=1,fn=16);
 bolts();
 
+middle();
 front();
 
