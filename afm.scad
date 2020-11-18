@@ -50,6 +50,11 @@ module springs(flexh=[5,15,5],flexx=3,ds=4.2,junction=1,fn=16)
   rotate([0,0,i*90+45])
   translate([r0,0,0.7])
     bendspring(flexh=flexh,flexx=flexx,ds=ds,junction=junction,fn=fn);
+  r1=10;
+  for(i=[0:1])
+  rotate([0,0,i*180])
+  translate([r1,0,0.7])
+    bendspring(flexh=flexh,flexx=flexx,ds=ds,junction=junction,fn=fn);
 }
 
 
@@ -67,6 +72,20 @@ module bolts()
         rotate([180,0,0])
           cylinder(d=3,h=10,$fn=16);
     }
+ 
+  r1=13;
+  color([0.6,0.6,0.7])
+  for(i=[0:1])
+  rotate([0,0,i*180])
+    translate([r1,0,26])
+    {
+        // head
+        cylinder(d=5.5,h=3,$fn=16);
+        // rod
+        rotate([180,0,0])
+          cylinder(d=3,h=10,$fn=16);
+    }
+
 }
 
 module front()
@@ -87,6 +106,8 @@ module front()
         cylinder(d=dinsert,h=in+0.1,center=true);
       // aperture hole
       cylinder(d=dopen,h=hc+0.1,center=true);
+      translate([0,0,-0.25])
+        springs(flexh=[5,10,5],flexx=3,ds=5,junction=1,fn=16);
     }
 }
 
