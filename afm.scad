@@ -1,4 +1,4 @@
-
+include <linactuator.scad>
 
 module piezo()
 {
@@ -122,11 +122,23 @@ module middle()
   }    
 }
 
+module actuators()
+{
+  for(i=[0:1])
+  rotate([0,0,180*i])
+  translate([-40,0,23])
+  {
+    color([0.4,0.4,0.4])
+    linactuator();
+    %sipka();
+  }
+}
+
 
 piezo();
 %springs(flexh=[5,10,5],flexx=3,ds=4.2,junction=1,fn=16);
 bolts();
-
+actuators();
 middle();
 front();
 
