@@ -11,7 +11,7 @@ sarafi_navoj_h=15; // gornja dubina rupe
 sarafi_prolaz_d=2.5; // poklopac
 sarafi_plocice_d=2.1;
 // sarafi_h=10; // dubina rupe za saraf
-sarafi_navod_d_dolje=1.8; // dolje za mali saraf
+sarafi_navoj_d_dolje=1.8; // dolje za mali saraf
 sarafi_navoj_h_dolje=15; // donja dubina rupe
 
 krug_d=10;
@@ -28,6 +28,7 @@ matica_h=2*8+25-4; // feder 28 mm
 podizac_h=matica_h+7.6;
 sipka_d=4.5; // rupa za navojnu šipku, dosta lufta
 prijelaz_h=matica_d-sipka_d; // visina konusnog 6-kutnog prijelaza od matice prema rupi za šipku da ne padnu slojevi
+sipka_M=3; // M3 šipka
 
 module linactuator()
 {
@@ -127,21 +128,23 @@ module spaceri()
 
 module matica()
 {
-  cylinder(d=6.8,h=2.4,$fn=6,center=true);
+  cylinder(d=2*sipka_M,h=0.8*sipka_M,$fn=6,center=true);
 }
 
 module sipka()
 {
-  cylinder(d=3,h=100,$fn=64,center=true);
+  cylinder(d=sipka_M,h=100,$fn=64,center=true);
 }
 
-/*
+
+if(0)
+{
 linactuator();
 %sipka();
-translate([0,0,matica_h/2-1.0])
+translate([0,0,matica_h/2-1.5])
   %matica();
-translate([0,0,-matica_h/2+1.5])
+translate([0,0,-matica_h/2+2.0])
   %matica();
 if(plocice > 0.5)
     spaceri();
-*/
+}
