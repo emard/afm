@@ -2,10 +2,10 @@ include <nut_cutter.scad>
 
 module rod_holder()
 {
-    drod=3; // rod hole dia
+    drod=2.9; // rod hole dia
     xhole=22; // mount screw holes distance
-    dhole=3; // mount screw hole dia
-    dhead=6; // mount screw head dia
+    dhole=2.7; // mount screw hole dia
+    dhead=5; // mount screw head dia
     hmount=3; // mount screw height from bottom
     box=[29,12,10]; // cube dimension
     translate([0,0,box[2]/2])

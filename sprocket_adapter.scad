@@ -132,7 +132,7 @@ union() {
       /* tightening M3 screw, larger in "removed" part */
       translate([0,-dtighthole/2,zdim/2])
         rotate([0,90,0])
-          cylinder(d=2.5,h=xdim+overcut,$fn=16,center=true); // circular
+          cylinder(d=2.7,h=xdim+overcut,$fn=16,center=true); // circular
           //eye_profile(h = xdim+overcut, r = rM3free, rotation = -90); // droplet shape
 
     translate([-xdim/2,-dtighthole/2,zdim/2])
