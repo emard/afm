@@ -6,8 +6,8 @@ module rod_holder()
     xhole=22; // mount screw holes distance
     dhole=3; // mount screw hole dia
     dhead=6; // mount screw head dia
-    hmount=5; // mount screw height from bottom
-    box=[25,15,10]; // cube dimension
+    hmount=3; // mount screw height from bottom
+    box=[29,12,10]; // cube dimension
     translate([0,0,box[2]/2])
     difference()
     {
@@ -15,12 +15,12 @@ module rod_holder()
       // cut mounting screws
       for(i=[0:1])
         rotate([0,0,180*i])
-          translate([xhole/3,0,0])
+          translate([xhole/2,0,0])
           {
             // screw bolt pass
             cylinder(d=dhole,h=box[2]+0.01,$fn=16,center=true);
             // screw head inlet
-            translate([0,0,-box[2]/2]+hmount)
+            translate([0,0,-box[2]/2+hmount])
               cylinder(d=dhead,h=box[2],$fn=16);
           }
       // cut rod
