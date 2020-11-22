@@ -17,7 +17,7 @@
 */
 
 /* Z-extrusion height (vertical) enough to hold M3 screw hole */
-zdim = 10;
+zdim = 9;
 /* X-length */
 xdim = 29;
 /* Y-width */
@@ -37,7 +37,7 @@ wdent1s = 0.3;
 /* big wheel radius (with dents d = 16.7mm)  */
 rbig = (16.7+freespace)/2;
 /* big wheel height */
-zbig = 4.5;
+zbig = 5;
 
 /* number of big dents = half of small dents */
 ndent2 = ndent1/2;
@@ -61,7 +61,7 @@ dmounthole = 22;
 /* tightening screws distance (B careful, do not intersect dents) */
 dtighthole = 22;
 /* let M3 screw pass freely */
-rM3free = (3+0.4)/2;
+rM3free = (3+0.6)/2;
 /* M3 screw threadhole */
 rM3thread = (3-0.17)/2;
 
