@@ -56,7 +56,7 @@ rsmall = (13.0+freespace_small)/2;
 overcut = 0.001;
 
 /* mounting hole radius */
-rmounthole = 1.8/2;
+rmounthole = 1.9/2;
 /* mounting holes distance */
 dmounthole = 22;
 
@@ -143,7 +143,7 @@ union() {
       /* tightening M3 screw, with droplet shape, smaller/thread in "extended" part */
     translate([0,dtighthole/2,zdim/2])
       rotate([0,90,0])
-        cylinder(d=1.8,h=xdim+overcut,$fn=16,center=true); // circular
+        cylinder(d=2.0,h=xdim+overcut,$fn=16,center=true); // circular
           //eye_profile(h = xdim+overcut, r = rM3thread, rotation = -90); // droplet shape
 
       /* polygon cuts this in snap-on half */
@@ -170,6 +170,12 @@ union() {
       /* cuts off upper notch for easier insertion */
       translate([dcusp/2,0,zbig/2])
         cube([dcusp,ydim,zbig], center = true);
+
+      /* cut off corners */
+      for(i=[-1:2:1])
+      translate([-xdim/2,ydim*i*0.92,zdim/2])
+        rotate([0,0,45])
+          cube([xdim,ydim,zdim+delta],center=true);
     }
   }
 
