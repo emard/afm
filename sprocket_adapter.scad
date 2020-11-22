@@ -25,7 +25,8 @@ xdim = 29;
 ydim = 29;
 
 /* free space between parts */
-freespace = 0.2;
+freespace_big = 0.0;
+freespace_small = 0.2;
 
 /* number of small dents */
 ndent1 = 40;
@@ -36,9 +37,9 @@ wdent1l = 0.8;
 /* dent width small */
 wdent1s = 0.3; 
 /* big wheel radius (with dents d = 16.7mm)  */
-rbig = (16.7+freespace)/2;
+rbig = (16.7+freespace_big)/2;
 /* big wheel height */
-zbig = 5;
+zbig = 4.5;
 
 /* number of big dents = half of small dents */
 ndent2 = ndent1/2;
@@ -49,7 +50,7 @@ wdent2l = 0.8;
 /* dent width small */
 wdent2s = 0.3;
 /* small wheel radius (with dents d = 13.0mm) */
-rsmall = (13.0+freespace)/2;
+rsmall = (13.0+freespace_small)/2;
 
 /* make sure we cut it all */
 overcut = 0.001;
