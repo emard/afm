@@ -129,21 +129,21 @@ union() {
       translate([ dmounthole/2,0,zdim/2])
         eye_profile(h = zdim + overcut, r = rmounthole, rotation = 90);
 
-      /* tightening M3 screw, with droplet shape, larger in "removed" part */
-      translate([0, -dtighthole/2,zdim/2])
+      /* tightening M3 screw, larger in "removed" part */
+      translate([0,-dtighthole/2,zdim/2])
         rotate([0,90,0])
-          cylinder(d=2.5,h=xdim+overcut,$fn=16,center=true);
-          //eye_profile(h = xdim+overcut, r = rM3free, rotation = -90);
+          cylinder(d=2.5,h=xdim+overcut,$fn=16,center=true); // circular
+          //eye_profile(h = xdim+overcut, r = rM3free, rotation = -90); // droplet shape
 
     translate([-xdim/2,-dtighthole/2,zdim/2])
       rotate([0,90,0])
-         head_cutter(d=5,h=10);
-      /* tightening M3 screw, with droplet shape, smaller/thread in "extended" part */
-      translate([0, dtighthole/2,zdim/2])
-        rotate([0,90,0])
+         head_cutter(d=5,h=9);
 
-   cylinder(d=1.8,h=xdim+overcut,$fn=16,center=true);
-          //eye_profile(h = xdim+overcut, r = rM3thread, rotation = -90);
+      /* tightening M3 screw, with droplet shape, smaller/thread in "extended" part */
+    translate([0,dtighthole/2,zdim/2])
+      rotate([0,90,0])
+        cylinder(d=1.8,h=xdim+overcut,$fn=16,center=true); // circular
+          //eye_profile(h = xdim+overcut, r = rM3thread, rotation = -90); // droplet shape
 
       /* polygon cuts this in snap-on half */
       translate([0,0,-delta/2])
