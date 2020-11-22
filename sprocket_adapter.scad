@@ -24,7 +24,7 @@ xdim = 29;
 ydim = 29;
 
 /* free space between parts */
-freespace = 0.4;
+freespace = 0.2;
 
 /* number of small dents */
 ndent1 = 40;
